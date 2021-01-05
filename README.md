@@ -1,6 +1,6 @@
 # machine-learning-in-action
 code for the book *Machine Learning in Action*
-## ch2
+## ch2 Classification
 ### 2.1 Machine Learning Basics
 ### 2.2 k-Nearest Neighbors
 kNN的优点是容易实现、准确率高、不易受到异常数据点的影响；缺点是计算代价大。常用的距离度量：
