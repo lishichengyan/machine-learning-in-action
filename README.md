@@ -19,6 +19,7 @@ kNN的优点是容易实现、准确率高、不易受到异常数据点的影�
    1. $J(A, B) = \frac{|A \cap B|}{|A|+|B|-|A \cup B|}$
    2. 度量两个集合的相似性
 ### 2.3 Decision Trees
+**可视化树没看**
 1. 如何衡量一个数据集的混乱程度
    1. 香农熵
       1. 一个系统$S$中有$n$个事件：$\{E_1, E_2, ..., E_n\}$，每个事件发生的概率是$\{P_1, P_2, ..., P_n\}$，那么事件$E_i$的自信息（self-information）是：$I(E_i) = -log_2P_i$
@@ -42,3 +43,18 @@ kNN的优点是容易实现、准确率高、不易受到异常数据点的影�
          4. 克服了ID3选择属性时偏向选择取值多的属性的不足
    3. CART
       1. 根据Gini不纯度来构建决策树
+### 2.4 Naive Bayes
+1. Bayes Rules
+   1. 条件概率$P(A|B) = \frac{P(A)P(B)}{P(B)}$
+   2. 由上式，$P(B|A) = \frac{P(A)P(B)}{P(A)}$ ,于是得到$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$，也就是所谓的Bayes公式
+2. 处理文本的基本方法
+   1. naive
+      1. 有一堆文本的集合，首先把这堆文本都扫一遍，得到所有单词的集合，将这个集合看作一个很长的向量：$[w_1, w_2, w_3, ... , w_n]$，将每一份文本也看作一个等长的向量，如果某个词出现过，这个词对应的位置为1，否则为0。例如所有单词的集合是$\{'I', 'love', 'machine', 'learning'\}$，某个文本是"machine learning"，如果按照“I love machine learning”的顺序，该文本的向量就是$[0, 0, 1, 1]$
+   2. bag of words
+      1. 同时考虑单词出现的频率。例如某个文本是"machine learning learning machine"，向量是$[0, 0, 2, 2]$
+3. word2vec
+4. 应用：识别垃圾邮件
+
+### 2.5 Logistic Regression
+### 2.6 Support Vector Machine
+### 2.7 AdaBoost
