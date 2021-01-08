@@ -2,6 +2,17 @@
 code for the book *Machine Learning in Action*
 ## ch2 Classification
 ### 2.1 Machine Learning Basics
+Top 10 algorithms in data mining：
+1. Decision trees
+2. k-means
+3. SVM
+4. Apriori
+5. EM
+6. PageRank
+7. AdaBoost
+8. kNN
+9. naive Bayes
+10. CART
 ### 2.2 k-Nearest Neighbors
 kNN的优点是容易实现、准确率高、不易受到异常数据点的影响；缺点是计算代价大。常用的距离度量：
 1. 闵可夫斯基距离
@@ -57,5 +68,22 @@ kNN的优点是容易实现、准确率高、不易受到异常数据点的影�
 4. 应用：识别垃圾邮件
 
 ### 2.5 Logistic Regression
+1. 数学基础
+   1. 回归函数$y = w_0x_0 + w_1x_1 + ... + w_nx_n$，写成向量形式$y = W^TX$，此处$W = \begin{bmatrix} w_0\\ w_1\\w_2\\ \vdots \\w_n \end{bmatrix}$，$X=\begin{bmatrix} x_0\\ x_1\\x_2\\ \vdots \\x_n \end{bmatrix}$。$x_0$是为了形式整齐加上去的，此处取1。
+   2. 现在考虑sigmoid函数$\sigma(x) = sigmoid(x) = \frac{1}{1+exp(-x)}$。逻辑回归要干的事就是学习回归函数的weight矩阵$W$，然后求$sigmoid(W^TX)$，如果结果大于一个阈值就输出1，否则输出0。结合函数图像一般阈值取0.5。sigmoid有两个常用的性质：
+      1. $\sigma(-x)=1-\sigma(x)$
+      2. $\sigma'(x)=\sigma(x)(1-\sigma(x))$
+   3. 为了量化分类器的误差，定义损失函数：$L(\sigma(x), y) = -ylog(\sigma(x))-(1-y)log(\sigma(x))$。这是一个很精妙的函数，画图以后可以看出它很好地刻画了$y=0$和$y=1$两种情况下该有的loss变化。
+   4. 由loss function得到cost function：$J=\frac{1}{m}\Sigma_{i=1}^m L(\sigma(x_i), y_i)$
+   5. 我们希望得到$\frac{\partial J}{\partial w_j}$（即，第$j$个特征的导数），可以用链式求导法则，经过一系列步骤得到：$\frac{\partial J}{\partial w_j} = \frac{1}{m}\Sigma_{i=1}^m (\sigma(x_i) - y_i)x_j$
+   6. 于是可以用$W = W \pm \alpha\frac{\partial J}{\partial W}$更新$W$
+2. batch gradient descent/ascent & stochastic gradient descent/ascent
+   1. batch是对整个数据集
+   2. stochastic是对单个向量
+3. 经验教训：
+   1. 随机化加速收敛： 一些很难被分类的边界点对weight的影响很大，训练过程中可能会发生抖动导致weight难以收敛，可以通过随机选择要更新的$w_j$减轻这种影响
+   2. 使用变化的学习率，例如可以把学习率$\alpha$定义为一个随着训练迭代次数增加逐渐减小的函数，道理是随着迭代次数增加模型趋于稳定，数据对weight的“贡献”应该趋于减小
 ### 2.6 Support Vector Machine
 ### 2.7 AdaBoost
+## ch3 Forecasting numeric values with Regression
+## ch4 Unsupervised learning
