@@ -60,7 +60,7 @@ kNN的优点是容易实现、准确率高、不易受到异常数据点的影�
    1. 条件概率$P(A|B) = \frac{P(A)P(B)}{P(B)}$
    2. 由上式，$P(B|A) = \frac{P(A)P(B)}{P(A)}$ ,于是得到$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$，也就是所谓的Bayes公式
 2. 处理文本的基本方法
-   1. naive
+   1. naive way (one-hot encoding)
       1. 有一堆文本的集合，首先把这堆文本都扫一遍，得到所有单词的集合，将这个集合看作一个很长的向量：$[w_1, w_2, w_3, ... , w_n]$，将每一份文本也看作一个等长的向量，如果某个词出现过，这个词对应的位置为1，否则为0。例如所有单词的集合是$\{'I', 'love', 'machine', 'learning'\}$，某个文本是"machine learning"，如果按照“I love machine learning”的顺序，该文本的向量就是$[0, 0, 1, 1]$
    2. bag of words
       1. 同时考虑单词出现的频率。例如某个文本是"machine learning learning machine"，向量是$[0, 0, 2, 2]$
