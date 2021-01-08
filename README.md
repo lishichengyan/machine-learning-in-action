@@ -44,6 +44,7 @@ kNN的优点是容易实现、准确率高、不易受到异常数据点的影�
    3. CART
       1. 根据Gini不纯度来构建决策树
 ### 2.4 Naive Bayes
+**实例没看**
 1. Bayes Rules
    1. 条件概率$P(A|B) = \frac{P(A)P(B)}{P(B)}$
    2. 由上式，$P(B|A) = \frac{P(A)P(B)}{P(A)}$ ,于是得到$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$，也就是所谓的Bayes公式
