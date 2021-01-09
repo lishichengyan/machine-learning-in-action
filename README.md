@@ -84,6 +84,17 @@ kNN的优点是容易实现、准确率高、不易受到异常数据点的影�
    1. 随机化加速收敛： 一些很难被分类的边界点对weight的影响很大，训练过程中可能会发生抖动导致weight难以收敛，可以通过随机选择要更新的$w_j$减轻这种影响
    2. 使用变化的学习率，例如可以把学习率$\alpha$定义为一个随着训练迭代次数增加逐渐减小的函数，道理是随着迭代次数增加模型趋于稳定，数据对weight的“贡献”应该趋于减小
 ### 2.6 Support Vector Machine
+1. 优缺点
+   1. 优点：low generalization error，computationally inexpensive，easy to interpret results
+   2. 缺点：sensitive to tuning params and kernel choice, natively only handles binary classification
+2. 数学基础
+   1. 支持向量（support vector）是满足约束$W^TX+b=\pm1$的向量，直观上讲就是离超平面最近的向量
+   2. 间隔（margin）是指支持向量到超平面的距离的两倍：$d=2\mathop{min}\limits_{i}\frac{|W^Tx_i+b|}{||W||}$，周志华西瓜书说间隔是“两个异类支持向量到超平面的距离之和”，这个说法虽然是对的但很有误导性，很影响在大脑中建立良好的几何图像
+   3. 我们的优化目标是$arg \mathop{max}\limits_{W, b}\{\mathop{min}\limits_{n}(\frac{2|W^TX+b|}{||W||})\}$，从直观上讲就是让margin最大。可以证明，对$(W,b)$进行放缩并不会影响原优化问题的解，于是不妨约束$(W,b)$使得$\mathop{min}\limits_{i}|X^Tx_i+b|=1$，原问题等价于优化：$\mathop{min}\limits_{W, b}\frac{1}{2}||W||$，s.t. $y_i(W^Tx_i+b) \ge 1$，$i=1,2,...,m$（称为线性支持向量机基本型），等价于优化$\mathop{min}\limits_{W, b}\frac{1}{2}||W||$，s.t. $y_imin(W^Tx_i+b) = 1$，$i=1,2,...,m$
+   4. 线性支持向量机基本型属于凸二次规划问题，也即形如$\mathop{min}\limits_{u}\frac{1}{2}u^TQu+t^Tu$，s.t. $c_i^Tu \ge d_i, i=1,2,...,m$的问题
+   5. 可以用拉格朗日函数求解凸二次规划问题。可以证明原优化问题等价于优化某个拉格朗日函数，然后可以进一步证明等价于优化对偶问题（Slater条件）
+3. Sequential Minimal Optimization
+4. Kernel tricks
 ### 2.7 AdaBoost
 ## ch3 Forecasting numeric values with Regression
 ## ch4 Unsupervised learning
